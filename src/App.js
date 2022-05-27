@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './components/pages/Home'
+import About from './components/pages/About'
+import Product from './components/pages/Product'
+import ProductDetail from './components/pages/ProductDetail'
+import Page404 from './components/pages/Page404'
+import { FakeStoreProvider } from './store/FakeStoreContex'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <FakeStoreProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+      </FakeStoreProvider>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
