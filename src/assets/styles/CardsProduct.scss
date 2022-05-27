@@ -24,6 +24,10 @@
   height: 50px;
 }
 .time-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 2rem;
   margin: 0.5rem 0 0.5rem 0;
 }

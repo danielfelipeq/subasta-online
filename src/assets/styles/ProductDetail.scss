@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 .detail-product-image {
   width: 130px;
@@ -15,6 +15,10 @@
   background-repeat: no-repeat;
 }
 .button-return {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   margin-top: 0.5rem;
   border: none;
   background: none;
@@ -27,6 +31,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 1rem;
 }
 .product-title {
   font-size: 1.5rem;
@@ -41,6 +46,11 @@
 .container-detail {
   display: flex;
   flex-direction: column;
+  padding: 0 1rem;
+}
+.product-price {
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 .button-buy {
   margin: 1rem 0 0.5rem 0;
@@ -54,17 +64,16 @@
   align-self: center;
   cursor: pointer;
 }
-.button-buy-disable:disabled {
-  margin: 1rem 0 0.5rem 0;
-  border: 1px solid #797770;
-  border-radius: 10px;
-  background: none;
-  color: #797770;
-  font-size: 1.5rem;
-  width: 200px;
-  height: 45px;
-  align-self: center;
-  cursor: pointer;
+.p-finished-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #c03c3c;
+  font-weight: bold;
+  gap: 0.5rem;
+  font-size: 1rem;
+  margin: 1rem 0 1rem 0;
 }
 @media (min-width: 768px) {
   .button-return {

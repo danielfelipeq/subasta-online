@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { BsArrowLeftSquareFill } from 'react-icons/bs'
+import { RiEmotionSadLine, RiTimerLine } from 'react-icons/ri'
 import { useStateData } from '../../store/FakeStoreContex'
 import useCountdown from '../../store/useCountdown'
 import '../../assets/styles/ProductDetail.scss'
@@ -9,8 +11,8 @@ const ProductDetail = () => {
   const endTime = productDetail.timeCount + productDetail.initDate
 
   const [timeLeft] = useCountdown(endTime)
-  const minutes = Math.floor(timeLeft / 60000) % 60
-  const seconds = Math.floor(timeLeft / 1000) % 60
+  const minutes = `0${Math.floor(timeLeft / 60000) % 60}`.slice(-2)
+  const seconds = `0${Math.floor(timeLeft / 1000) % 60}`.slice(-2)
 
   const navigate = useNavigate()
   useEffect(() => {}, [productDetail])
@@ -23,10 +25,12 @@ const ProductDetail = () => {
           navigate(-1)
         }}
       >
-        Regresar
+        <BsArrowLeftSquareFill /> Regresar
       </button>
       <div className="line" />
-      <h1 className="product-title">{`${minutes}:${seconds}`}</h1>
+      <h1 className="time-product">
+        <RiTimerLine /> {`${minutes}:${seconds}`}
+      </h1>
       <div className="detail-card-product">
         <div className="detail-body">
           <h1 className="product-title">{productDetail.title}</h1>
@@ -37,7 +41,7 @@ const ProductDetail = () => {
               alt={productDetail.title}
             />
           </figure>
-          <p className="product-price">{productDetail.price}</p>
+          <p className="product-price">$ {productDetail.price}</p>
         </div>
         <div className="container-detail">
           <h2>Categoría</h2>
@@ -46,9 +50,15 @@ const ProductDetail = () => {
           <h2>Descripción</h2>
           <p className="product-description">{productDetail.description}</p>
           <div className="line" />
-          <button className="button-buy" type="button" disabled>
-            Comprar
-          </button>
+          {minutes === '00' && seconds === '00' ? (
+            <p className="p-finished-time">
+              Se termino su tiempo <RiEmotionSadLine />
+            </p>
+          ) : (
+            <button className="button-buy" type="button">
+              Comprar
+            </button>
+          )}
         </div>
       </div>
     </div>
