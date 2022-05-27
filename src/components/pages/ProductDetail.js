@@ -5,15 +5,14 @@ import useCountdown from '../../store/useCountdown'
 import '../../assets/styles/ProductDetail.scss'
 
 const ProductDetail = () => {
-  const endTime =
-    new Date().getTime() + 60000 * (Math.round(Math.random() * 5) + 1)
+  const { productDetail } = useStateData()
+  const endTime = productDetail.timeCount + productDetail.initDate
+
   const [timeLeft] = useCountdown(endTime)
   const minutes = Math.floor(timeLeft / 60000) % 60
   const seconds = Math.floor(timeLeft / 1000) % 60
 
-  const { productDetail } = useStateData()
   const navigate = useNavigate()
-  // console.log(productDetail, 'demendo')
   useEffect(() => {}, [productDetail])
   return (
     <div className="detail-container-product">
@@ -47,7 +46,7 @@ const ProductDetail = () => {
           <h2>Descripción</h2>
           <p className="product-description">{productDetail.description}</p>
           <div className="line" />
-          <button className="button-buy" type="button">
+          <button className="button-buy" type="button" disabled>
             Comprar
           </button>
         </div>

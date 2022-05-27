@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Header from '../Layouts/Header'
 import '../../assets/styles/Home.scss'
 
 const Home = () => {
+  const navigate = useNavigate()
+
   return (
     <>
       <Header />
@@ -16,10 +18,14 @@ const Home = () => {
             />
           </figure>
         </div>
-        <button className="home-button" type="button">
-          <Link className="link-product" to="/product">
-            Ver todos los productos
-          </Link>
+        <button
+          className="home-button"
+          type="button"
+          onClick={() => {
+            navigate('/product')
+          }}
+        >
+          Ver todos los productos
         </button>
       </section>
     </>

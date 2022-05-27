@@ -5,6 +5,7 @@ export const FakeStoreContext = createContext()
 export const FakeStoreProvider = ({ children }) => {
   const [product, setProduct] = useState([])
   const [productDetail, setProductDetail] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   return (
     <FakeStoreContext.Provider
@@ -12,9 +13,11 @@ export const FakeStoreProvider = ({ children }) => {
         // estados
         product,
         productDetail,
+        loading,
         // funciones
         setProduct,
         setProductDetail,
+        setLoading,
       }}
     >
       {children}
